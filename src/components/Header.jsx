@@ -8,12 +8,12 @@ export default function Header() {
     <div className="flex flex-row ">
       <Image width={150} height={100} src="/images/picturest.jpg" alt="pic" />
       <NavBar />
-      <SignedOut>
+      {/* <SignedOut>
         <SignInButton />
       </SignedOut>
       <SignedIn>
         <UserButton />
-      </SignedIn>
+      </SignedIn> */}
     </div>
   );
 }
