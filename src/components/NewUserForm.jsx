@@ -1,17 +1,17 @@
 import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 export default async function NewUserForm() {
     
-    const { user_id } = await auth()
-
+    const { userId } = await auth()
+    console.log(userId)
     async function handleSubmit(formData) {
         "use server";
         const username = formData.get("username")
         const bio = formData.get("bio")
-        await db.query(`INSERT INTO users(username, bio, clerk_id) VALUES($1, $2, $3)`, [username, bio, user_id])
+        await db.query(`INSERT INTO users(username, bio, clerk_id) VALUES($1, $2, $3)`, [username, bio, userId])
         
         revalidatePath("/posts")
         redirect("/posts")
