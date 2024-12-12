@@ -1,28 +1,26 @@
-import "./globals.css";
+import './globals.css';
 
 export const metadata = {
-  title: "Picturest",
-  description: "A Social media all about sharing your interests",
+  title: 'Picturest',
+  description: 'A Social media all about sharing your interests',
 };
-
-
 
 import {
   ClerkProvider,
   SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import './globals.css'
-export default function RootLayout({
-  children,
-}
-) {
+  UserButton,
+} from '@clerk/nextjs';
+import './globals.css';
+import Header from '@/components/Header';
+
+export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
         <body>
+          <Header />
           <SignedOut>
             <SignInButton />
           </SignedOut>
@@ -33,5 +31,5 @@ export default function RootLayout({
         </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
