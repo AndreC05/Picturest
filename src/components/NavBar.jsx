@@ -19,6 +19,7 @@ export default function NavBar() {
         <QuestionMarkCircledIcon />
       </Link>
       <Link className='p-5' href={"/posts"}>Posts <ActivityLogIcon/> </Link>
+      <Link className='p-5'  href={"/users"} >User Profile</Link>
     </div>
   );
 }
