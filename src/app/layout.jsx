@@ -21,12 +21,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body>
           <Header />
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          
           {children}
         </body>
       </html>
