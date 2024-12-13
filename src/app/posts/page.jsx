@@ -53,10 +53,13 @@ export default async function Posts() {
           <p>{post.date}</p>
           <p>{post.likes} likes</p>
           <PostLikeBtn />
+          {userId==post.clerk_id && 
 
           <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
-
+          }
+          {userId==post.clerk_id &&
           <PostDeleteBtn post={post} handleDeletePost={handleDeletePost} />
+          }
         </div>
       ))}
     </div>
