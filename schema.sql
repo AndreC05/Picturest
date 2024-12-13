@@ -4,6 +4,7 @@ CREATE TABLE users(
   bio TEXT,
   clerk_id TEXT,
   date_joined DATE NOT NULL DEFAULT CURRENT_DATE );
+  
 CREATE TABLE posts(
   id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title TEXT,
