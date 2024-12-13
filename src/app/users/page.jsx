@@ -1,11 +1,11 @@
 import NewUserForm from "@/components/NewUserForm";
 import { auth } from "@clerk/nextjs/server";
 
-export default async function UsersProfile(){
+export default async function UsersProfile() {
+  const { userId } = await auth();
 
-    const { userId } = await auth()
-
-    return (
-        <NewUserForm/>
-    )
+  return (
+    <NewUserForm />
+    //TODO change to editUserForm
+  );
 }
