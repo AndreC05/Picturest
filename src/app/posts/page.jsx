@@ -9,6 +9,7 @@ import { handleDeletePost, handleEditPost, handleNewPost } from '@/utils/actions
 import PostLikeBtn from '@/components/postLikeBtn';
 import PostDeleteBtn from '@/components/postDeleteBtn';
 import EditPostBtn from '@/components/EditPostBtn';
+import Comments from '@/components/comment';
 
 export default async function Posts() {
   const { userId } = await auth();
@@ -52,7 +53,7 @@ export default async function Posts() {
           <img src={post.image} />
           <p>{post.date}</p>
           <p>{post.likes} likes</p>
-          <PostLikeBtn />
+          <PostLikeBtn post={post.id}  />
           {userId==post.clerk_id && 
 
           <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
@@ -60,6 +61,8 @@ export default async function Posts() {
           {userId==post.clerk_id &&
           <PostDeleteBtn post={post} handleDeletePost={handleDeletePost} />
           }
+
+          <Comments/>
         </div>
       ))}
     </div>

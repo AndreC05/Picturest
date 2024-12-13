@@ -14,3 +14,8 @@ export async function handleDeletePost(post) {
   db.query(`DELETE FROM posts WHERE id=${post.id}`)
   redirect(`/posts`)
 }
+
+export async function handlePostLikeBtn(post) {
+  db.query(`SELECT *, users.username from likes
+     JOIN users on likes.post_id = ${post.id}`)
+}
