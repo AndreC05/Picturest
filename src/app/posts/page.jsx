@@ -1,13 +1,14 @@
-import { db } from "@/utils/db";
-import { auth } from "@clerk/nextjs/server";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
-import NewUserForm from "@/components/NewUserForm";
-import Link from "next/link";
+import { db } from '@/utils/db';
+import { auth } from '@clerk/nextjs/server';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
+import NewUserForm from '@/components/NewUserForm';
+import Link from 'next/link';
 
-import { handleNewPost } from "@/utils/actions";
+import { handleEditPost, handleNewPost } from '@/utils/actions';
 
-import PostLikeBtn from "@/components/postLikeBtn";
-import PostDeleteBtn from "@/components/postDeleteBtn";
+import PostLikeBtn from '@/components/postLikeBtn';
+import PostDeleteBtn from '@/components/postDeleteBtn';
+import EditPostBtn from '@/components/EditPostBtn';
 
 export default async function Posts() {
   const { userId } = await auth();
@@ -25,7 +26,7 @@ export default async function Posts() {
   return (
     <div className="flex flex-row">
       <SignedIn>
-        {" "}
+        {' '}
         {numCount === 1 ? (
           <button onClick={handleNewPost}>Add Post</button>
         ) : (
@@ -34,8 +35,8 @@ export default async function Posts() {
       </SignedIn>
 
       <SignedOut>
-        {" "}
-        <Link href={"/sign-in"}>Sign-in before making a post</Link>
+        {' '}
+        <Link href={'/sign-in'}>Sign-in before making a post</Link>
       </SignedOut>
 
       {posts.map((post) => (
@@ -52,6 +53,9 @@ export default async function Posts() {
           <p>{post.date}</p>
           <p>{post.likes} likes</p>
           <PostLikeBtn />
+
+          <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
+
           <PostDeleteBtn post={post.id} />
         </div>
       ))}
