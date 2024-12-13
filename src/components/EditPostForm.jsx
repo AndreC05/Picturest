@@ -31,6 +31,7 @@ export default async function EditPostForm({ postId }) {
       ></textarea>
       <label htmlFor="imgSrc">Image</label>
       <input type="text" name="imgSrc" required />
+      <button>Submit</button>
     </form>
   );
 }

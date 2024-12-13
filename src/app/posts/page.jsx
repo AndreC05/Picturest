@@ -4,7 +4,7 @@ import { SignedIn, SignedOut } from '@clerk/nextjs';
 import NewUserForm from '@/components/NewUserForm';
 import Link from 'next/link';
 
-import { handleEditPost, handleNewPost } from '@/utils/actions';
+import { handleDeletePost, handleEditPost, handleNewPost } from '@/utils/actions';
 
 import PostLikeBtn from '@/components/postLikeBtn';
 import PostDeleteBtn from '@/components/postDeleteBtn';
@@ -56,7 +56,7 @@ export default async function Posts() {
 
           <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
 
-          <PostDeleteBtn post={post.id} />
+          <PostDeleteBtn post={post} handleDeletePost={handleDeletePost} />
         </div>
       ))}
     </div>
