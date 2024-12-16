@@ -13,14 +13,12 @@ import {
 import PostLikeBtn from "@/components/postLikeBtn";
 import PostDeleteBtn from "@/components/postDeleteBtn";
 import EditPostBtn from "@/components/EditPostBtn";
-import Comments from "@/components/Comment";
-import Image from "next/image";
 
 export default async function Posts() {
   const { userId } = await auth();
 
   const posts = (
-    await db.query(`SELECT posts.id, posts.title, posts.clerk_id, posts.content, posts.image, users.username, users.id AS user_Id,
+    await db.query(`SELECT posts.id, posts.title, posts.clerk_id, posts.content, posts.image, users.username, users.id AS user_id,
          TO_CHAR(posts.post_date, 'YYYY-MM-DD') AS date, posts.likes FROM posts JOIN users ON posts.clerk_id=users.clerk_id 
          ORDER BY posts.id DESC`)
   ).rows;
@@ -51,7 +49,7 @@ export default async function Posts() {
           className="flex  border bg-neutral-200 p-5 flex-col m-5 w-96 rounded-2xl"
         >
           <h3 className="text-xl">
-            <Link href={`/users/${post.user_Id}`}>{post.username}</Link>
+            <Link href={`/users/${post.user_id}`}>{post.username}</Link>
           </h3>
           <h3 className="text-2xl">{post.title}</h3>
           <p>{post.content}</p>

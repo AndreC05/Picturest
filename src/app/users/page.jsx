@@ -1,11 +1,23 @@
-import NewUserForm from "@/components/NewUserForm";
+import UpdateUserForm from "@/components/UpdateUserForm";
+import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
+import Link from "next/link";
 
 export default async function UsersProfile() {
   const { userId } = await auth();
 
+  const user_idResponse = await db.query(
+    `SELECT users.id FROM users WHERE clerk_id='${userId}'`
+  );
+  const user_id = user_idResponse.rows[0].id;
+
   return (
-    <NewUserForm />
-    //TODO change to editUserForm
+    <>
+      <h3>Change username and bio: </h3>
+      <UpdateUserForm />
+      <h3>
+        Go to my profile: <Link href={`/users/${user_id}`}>click here</Link>
+      </h3>
+    </>
   );
 }
