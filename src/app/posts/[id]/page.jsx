@@ -3,6 +3,7 @@ import PostDeleteBtn from "@/components/postDeleteBtn"
 import PostLikeBtn from "@/components/postLikeBtn"
 import { handleEditPost } from "@/utils/actions"
 import { db } from "@/utils/db"
+import Comments from "@/components/comment"
 import { SignedIn, SignedOut } from "@clerk/nextjs"
 import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies"
 import Link from "next/link"
@@ -34,8 +35,8 @@ export default async function SinglePostPage({params}) {
 
           <PostDeleteBtn post={p.id} />
                 </div>
-
-            ))} 
+                        ))} 
+            <Comments/>
         </SignedIn>
         <SignedOut>
             <Link href={"/sign-in"}>Please Sign In</Link>

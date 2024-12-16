@@ -9,7 +9,7 @@ import React from 'react';
 
 export default function NavBar() {
   return (
-    <div className="flex flex-row justify-center items-center gap-48 bg-black text-white">
+    <div className="flex flex-row justify-center items-center gap-48 bg-black text-white w-screen">
       <Link className="p-5" href="/">
         Home
         <HomeIcon />

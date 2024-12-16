@@ -10,6 +10,7 @@ import PostLikeBtn from '@/components/postLikeBtn';
 import PostDeleteBtn from '@/components/postDeleteBtn';
 import EditPostBtn from '@/components/EditPostBtn';
 import Comments from '@/components/comment';
+import Image from 'next/image';
 
 export default async function Posts() {
   const { userId } = await auth();
@@ -53,16 +54,22 @@ export default async function Posts() {
           <img src={post.image} />
           <p>{post.date}</p>
           <p>{post.likes} likes</p>
-          <PostLikeBtn post={post.id}  />
-          {userId==post.clerk_id && 
+          <div className='flex flex-row'>
+            <PostLikeBtn post={post.id}  />
+              {userId==post.clerk_id && 
 
-          <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
-          }
-          {userId==post.clerk_id &&
-          <PostDeleteBtn post={post} handleDeletePost={handleDeletePost} />
-          }
+              <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
+              }
+              {userId==post.clerk_id &&
+              <PostDeleteBtn post={post} handleDeletePost={handleDeletePost} />
+              }
+              <Link href={`/posts/${post.id}`}>
+                <img width={18} height={10} src={'images/comment.png'} />
+              </Link>
+              
 
-          <Comments/>
+          </div>
+          
         </div>
       ))}
     </div>

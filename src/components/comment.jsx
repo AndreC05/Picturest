@@ -13,7 +13,7 @@ export default async function Comments() {
     }
 
     return (
-        <form action={handleComment}>
+        <form className="p-5" action={handleComment}>
             <input name="content" type="text" placeholder="comment" />
             <button type="submit" >Comment</button>
         </form>

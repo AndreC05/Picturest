@@ -5,7 +5,7 @@ import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
-    <div className="flex flex-row ">
+    <div className="flex flex-row w-fit ">
       <Image
         width={150}
         height={100}
