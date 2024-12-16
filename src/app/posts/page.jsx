@@ -1,16 +1,20 @@
-import { db } from '@/utils/db';
-import { auth } from '@clerk/nextjs/server';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
-import NewUserForm from '@/components/NewUserForm';
-import Link from 'next/link';
+import { db } from "@/utils/db";
+import { auth } from "@clerk/nextjs/server";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import NewUserForm from "@/components/NewUserForm";
+import Link from "next/link";
 
-import { handleDeletePost, handleEditPost, handleNewPost } from '@/utils/actions';
+import {
+  handleDeletePost,
+  handleEditPost,
+  handleNewPost,
+} from "@/utils/actions";
 
-import PostLikeBtn from '@/components/postLikeBtn';
-import PostDeleteBtn from '@/components/postDeleteBtn';
-import EditPostBtn from '@/components/EditPostBtn';
-import Comments from '@/components/comment';
-import Image from 'next/image';
+import PostLikeBtn from "@/components/postLikeBtn";
+import PostDeleteBtn from "@/components/postDeleteBtn";
+import EditPostBtn from "@/components/EditPostBtn";
+import Comments from "@/components/Comment";
+import Image from "next/image";
 
 export default async function Posts() {
   const { userId } = await auth();
@@ -28,7 +32,7 @@ export default async function Posts() {
   return (
     <div className="flex flex-row">
       <SignedIn>
-        {' '}
+        {" "}
         {numCount === 1 ? (
           <button onClick={handleNewPost}>Add Post</button>
         ) : (
@@ -37,8 +41,8 @@ export default async function Posts() {
       </SignedIn>
 
       <SignedOut>
-        {' '}
-        <Link href={'/sign-in'}>Sign-in before making a post</Link>
+        {" "}
+        <Link href={"/sign-in"}>Sign-in before making a post</Link>
       </SignedOut>
 
       {posts.map((post) => (
@@ -54,22 +58,18 @@ export default async function Posts() {
           <img src={post.image} />
           <p>{post.date}</p>
           <p>{post.likes} likes</p>
-          <div className='flex flex-row'>
-            <PostLikeBtn post={post.id}  />
-              {userId==post.clerk_id && 
-
+          <div className="flex flex-row">
+            <PostLikeBtn post={post.id} />
+            {userId == post.clerk_id && (
               <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
-              }
-              {userId==post.clerk_id &&
+            )}
+            {userId == post.clerk_id && (
               <PostDeleteBtn post={post} handleDeletePost={handleDeletePost} />
-              }
-              <Link href={`/posts/${post.id}`}>
-                <img width={18} height={10} src={'images/comment.png'} />
-              </Link>
-              
-
+            )}
+            <Link href={`/posts/${post.id}`}>
+              <img width={18} height={10} src={"images/comment.png"} />
+            </Link>
           </div>
-          
         </div>
       ))}
     </div>

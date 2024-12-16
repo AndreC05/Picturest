@@ -4,7 +4,7 @@ import PostLikeBtn from "@/components/postLikeBtn";
 import { auth } from "@clerk/nextjs/server";
 import { handleEditPost } from "@/utils/actions";
 import { db } from "@/utils/db";
-import Comments from "@/components/comment";
+import Comments from "@/components/Comment";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -66,7 +66,7 @@ export default async function SinglePostPage({ params }) {
             <p>{comment.likes}</p>
           </div>
         ))}
-        <Comments />
+        <Comments postId={postId} />
       </SignedIn>
       <SignedOut>
         <Link href={"/sign-in"}>Please Sign In</Link>
