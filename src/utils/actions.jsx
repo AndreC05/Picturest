@@ -10,12 +10,18 @@ export async function handleEditPost(postId) {
   redirect(`/posts/EditPost?postId=${postId}`);
 }
 export async function handleDeletePost(post) {
-  db.query(`DELETE FROM comments WHERE post_id=${post.id}`)
-  db.query(`DELETE FROM posts WHERE id=${post.id}`)
-  redirect(`/posts`)
+  db.query(`DELETE FROM comments WHERE post_id=${post.id}`);
+  db.query(`DELETE FROM posts WHERE id=${post.id}`);
+  redirect(`/posts`);
 }
 
 export async function handlePostLikeBtn(post) {
   db.query(`SELECT *, users.username from likes
-     JOIN users on likes.post_id = ${post.id}`)
+     JOIN users on likes.post_id = ${post.id}`);
+}
+
+export async function handleEditCommentBtn(postId, commentId) {
+  redirect(
+    `/posts/${postId}/editComment?commentId=${commentId}&postId=${postId}`
+  );
 }
