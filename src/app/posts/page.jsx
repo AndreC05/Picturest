@@ -7,12 +7,14 @@ import Link from "next/link";
 import {
   handleDeletePost,
   handleEditPost,
+  handlefetchPostLikes,
   handleNewPost,
 } from "@/utils/actions";
 
 import PostLikeBtn from "@/components/postLikeBtn";
 import PostDeleteBtn from "@/components/postDeleteBtn";
 import EditPostBtn from "@/components/EditPostBtn";
+import LikePost from "@/components/LikePost";
 
 export default async function Posts() {
   const { userId } = await auth();
@@ -57,7 +59,7 @@ export default async function Posts() {
           <p>{post.date}</p>
           <p>{post.likes} likes</p>
           <div className="flex flex-row">
-            <PostLikeBtn post={post.id} />
+            <LikePost post={post} />
             {userId == post.clerk_id && (
               <EditPostBtn postId={post.id} handleEditPost={handleEditPost} />
             )}
