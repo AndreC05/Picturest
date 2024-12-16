@@ -1,11 +1,12 @@
 import {
   ActivityLogIcon,
   HomeIcon,
+  PersonIcon,
   QuestionMarkCircledIcon,
   QuestionMarkIcon,
-} from '@radix-ui/react-icons';
-import Link from 'next/link';
-import React from 'react';
+} from "@radix-ui/react-icons";
+import Link from "next/link";
+import React from "react";
 
 export default function NavBar() {
   return (
@@ -15,14 +16,14 @@ export default function NavBar() {
         <HomeIcon />
       </Link>
 
-      <Link className="p-6" href={'/create'}>
+      <Link className="p-6" href={"/create"}>
         Create
       </Link>
-      <Link className="p-5" href={'/posts'}>
-        Posts <ActivityLogIcon />{' '}
+      <Link className="p-5" href={"/posts"}>
+        Posts <ActivityLogIcon />{" "}
       </Link>
-      <Link className="p-5" href={'/users'}>
-        User Profile
+      <Link className="p-5" href={"/users"}>
+        User Profile <PersonIcon />
       </Link>
       <Link className="p-5" href="/about">
         About

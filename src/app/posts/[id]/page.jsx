@@ -40,7 +40,7 @@ export default async function SinglePostPage({ params }) {
             className="flex  border bg-neutral-200 p-5 flex-col m-5 w-96 rounded-2xl"
           >
             <h3 className="text-xl">
-              <Link href={`/users/${p.user_Id}`}>{p.username}</Link>
+              <Link href={`/users/${p.user_id}`}>{p.username}</Link>
             </h3>
             <h3 className="text-2xl">{p.title}</h3>
             <p>{p.content}</p>
