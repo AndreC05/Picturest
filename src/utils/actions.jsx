@@ -16,6 +16,12 @@ export async function handleDeletePost(post) {
   redirect(`/posts`);
 }
 
+export async function handleEditCommentBtn(postId, commentId) {
+  redirect(
+    `/posts/${postId}/editComment?commentId=${commentId}&postId=${postId}`
+  );
+}
+
 //-------------------------------------------Post Likes
 
 export async function handlefetchPostLikes(post, userId) {
@@ -54,3 +60,4 @@ export async function handleIncreasePostLikes(post) {
 export async function handleRevalidateAfterLike() {
   revalidatePath("/posts");
 }
+
