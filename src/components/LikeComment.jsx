@@ -5,7 +5,7 @@ import {
 import { auth } from "@clerk/nextjs/server";
 import CommentLikeBtn from "./CommentLikeBtn";
 
-export default async function LikePost({ comment }) {
+export default async function LikeComment({ comment }) {
   const { userId } = await auth();
 
   const like = await handlefetchCommentLikes(userId, comment);
