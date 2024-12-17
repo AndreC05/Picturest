@@ -1,5 +1,6 @@
-'use client';
-import React from 'react';
+"use client";
+import { Pencil2Icon } from "@radix-ui/react-icons";
+import React from "react";
 
 export default function EditCommentBtn({
   postId,
@@ -11,8 +12,10 @@ export default function EditCommentBtn({
   }
   return (
     <>
-      {' '}
-      <button onClick={handleClick}>Edit Comment</button>
+      {" "}
+      <button title="Edit Post" onClick={handleClick}>
+        <Pencil2Icon />
+      </button>
     </>
   );
 }
