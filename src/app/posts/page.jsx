@@ -10,9 +10,9 @@ import {
   handleNewPost,
 } from "@/utils/actions";
 
-import PostLikeBtn from "@/components/postLikeBtn";
 import PostDeleteBtn from "@/components/postDeleteBtn";
 import EditPostBtn from "@/components/EditPostBtn";
+import LikePost from "@/components/LikePost";
 
 export default async function Posts() {
   const { userId } = await auth();
@@ -58,6 +58,7 @@ export default async function Posts() {
           
           <h3 className="text-2xl">{post.title}</h3>
           <p>{post.content}</p>
+
           <img src={post.image} className="w-full h-full p-2" />
           
           
@@ -80,6 +81,7 @@ export default async function Posts() {
             
             </div>
             
+
         </div>
       ))}
       </div>

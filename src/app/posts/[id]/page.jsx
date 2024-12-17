@@ -2,11 +2,13 @@ import EditPostBtn from "@/components/EditPostBtn";
 import PostDeleteBtn from "@/components/postDeleteBtn";
 import PostLikeBtn from "@/components/postLikeBtn";
 import { auth } from "@clerk/nextjs/server";
-import { handleEditPost } from "@/utils/actions";
+import { handleEditCommentBtn, handleEditPost } from "@/utils/actions";
 import { db } from "@/utils/db";
 import Comments from "@/components/Comment";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
+import EditCommentBtn from "@/components/EditCommentBtn";
+import LikePost from "@/components/LikePost";
 
 //Page with a single post and comments //Also has form to create and another to edit comments
 export default async function SinglePostPage({ params }) {
@@ -47,7 +49,7 @@ export default async function SinglePostPage({ params }) {
             <img src={p.image} />
             <p>{p.date}</p>
             <p>{p.likes} likes</p>
-            <PostLikeBtn />
+            <LikePost post={p} />
             {userId == p.clerk_id && (
               <EditPostBtn postId={p.id} handleEditPost={handleEditPost} />
             )}
@@ -64,6 +66,11 @@ export default async function SinglePostPage({ params }) {
             <p>{comment.content}</p>
             <p>{comment.date}</p>
             <p>{comment.likes}</p>
+            <EditCommentBtn
+              postId={postId}
+              commentId={comment.id}
+              handleEditCommentBtn={handleEditCommentBtn}
+            />
           </div>
         ))}
         <Comments postId={postId} />

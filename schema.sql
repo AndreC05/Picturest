@@ -26,9 +26,10 @@ CREATE TABLE comments(
 
 CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users(id),
+    clerk_id TEXT NOT NULL REFERENCES users(clerk_id),
     post_id INT REFERENCES posts(id),
     comment_id INT REFERENCES comments(id),
-    like_state BOOLEAN NOT NULL DEFAULT false,
-    created_at DATE NOT NULL DEFAULT CURRENT_DATE
+    like_state BOOLEAN NOT NULL DEFAULT false
 );
+
+-- ALTER TABLE likes ADD CONSTRAINT unique_post_like UNIQUE (post_id, clerk_id); -- Not implemented
