@@ -31,5 +31,3 @@ CREATE TABLE likes (
     comment_id INT REFERENCES comments(id),
     like_state BOOLEAN NOT NULL DEFAULT false
 );
-
--- ALTER TABLE likes ADD CONSTRAINT unique_post_like UNIQUE (post_id, clerk_id); -- Not implemented
