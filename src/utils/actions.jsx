@@ -61,3 +61,42 @@ export async function handleRevalidateAfterLike(post) {
   revalidatePath("/posts");
   revalidatePath(`/posts/${post.id}`);
 }
+
+//-------------------------------------------Comment Likes
+
+export async function handlefetchCommentLikes(userId, comment) {
+  const allLikes = await db.query(
+    `SELECT * FROM likes WHERE comment_id = $1 AND clerk_id = $2 `,
+    [comment.id, userId]
+  );
+
+  const like = allLikes.rows;
+
+  return like;
+}
+
+export async function handleInsertCommentLike(userId, comment) {
+  db.query(
+    `INSERT INTO likes (clerk_id, comment_id, like_state) VALUES ($1,$2,$3)`,
+    [userId, comment.id, true]
+  );
+}
+
+export async function handleUpdateCommentLike(state, userId, comment) {
+  db.query(
+    `UPDATE likes SET like_state =$1 WHERE comment_id = $2 AND clerk_id = $3`,
+    [state, comment.id, userId]
+  );
+}
+
+export async function handleDecreaseCommentLikes(comment) {
+  db.query(`UPDATE comments SET likes = likes - 1 WHERE id = $1`, [comment.id]);
+}
+
+export async function handleIncreaseCommentLikes(comment) {
+  db.query(`UPDATE comments SET likes = likes + 1 WHERE id = $1`, [comment.id]);
+}
+
+export async function handleRevalidateCommentsAfterLike(postId) {
+  revalidatePath(`/posts/${postId}`);
+}

@@ -1,6 +1,5 @@
 import EditPostBtn from "@/components/EditPostBtn";
 import PostDeleteBtn from "@/components/postDeleteBtn";
-import PostLikeBtn from "@/components/postLikeBtn";
 import { auth } from "@clerk/nextjs/server";
 import { handleEditCommentBtn, handleEditPost } from "@/utils/actions";
 import { db } from "@/utils/db";
