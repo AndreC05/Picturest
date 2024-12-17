@@ -1,4 +1,6 @@
-'use client';
+"use client";
+
+import { Pencil2Icon } from "@radix-ui/react-icons";
 
 export default function EditPostBtn({ postId, handleEditPost }) {
   async function handleClick() {
@@ -6,8 +8,10 @@ export default function EditPostBtn({ postId, handleEditPost }) {
   }
   return (
     <>
-      {' '}
-      <button onClick={handleClick}>Edit Post</button>
+      {" "}
+      <button title="Edit Post" onClick={handleClick}>
+        <Pencil2Icon />
+      </button>
     </>
   );
 }

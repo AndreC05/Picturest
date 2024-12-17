@@ -53,7 +53,7 @@ export default function PostLikeBtn({
   }
 
   return (
-    <button onClick={handleLikeClick}>
+    <button title="Like" onClick={handleLikeClick}>
       {likeState ? <HeartFilledIcon /> : <HeartIcon />}
     </button>
   );

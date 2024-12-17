@@ -79,7 +79,12 @@ export default async function Posts() {
                 )}
               </div>
               <Link href={`/posts/${post.id}`} className="pt-5">
-                <img width={18} height={10} src={"images/comment.png"} />
+                <img
+                  width={18}
+                  height={10}
+                  src={"images/comment.png"}
+                  title="Comments"
+                />
               </Link>
             </div>
           </div>
