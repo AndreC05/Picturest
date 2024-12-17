@@ -1,13 +1,14 @@
-import EditPostBtn from '@/components/EditPostBtn';
-import PostDeleteBtn from '@/components/postDeleteBtn';
-import PostLikeBtn from '@/components/postLikeBtn';
-import { auth } from '@clerk/nextjs/server';
-import { handleEditCommentBtn, handleEditPost } from '@/utils/actions';
-import { db } from '@/utils/db';
-import Comments from '@/components/Comment';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
-import Link from 'next/link';
-import EditCommentBtn from '@/components/EditCommentBtn';
+import EditPostBtn from "@/components/EditPostBtn";
+import PostDeleteBtn from "@/components/postDeleteBtn";
+import PostLikeBtn from "@/components/postLikeBtn";
+import { auth } from "@clerk/nextjs/server";
+import { handleEditCommentBtn, handleEditPost } from "@/utils/actions";
+import { db } from "@/utils/db";
+import Comments from "@/components/Comment";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Link from "next/link";
+import EditCommentBtn from "@/components/EditCommentBtn";
+import LikePost from "@/components/LikePost";
 
 //Page with a single post and comments //Also has form to create and another to edit comments
 export default async function SinglePostPage({ params }) {
@@ -48,7 +49,7 @@ export default async function SinglePostPage({ params }) {
             <img src={p.image} />
             <p>{p.date}</p>
             <p>{p.likes} likes</p>
-            <PostLikeBtn />
+            <LikePost post={p} />
             {userId == p.clerk_id && (
               <EditPostBtn postId={p.id} handleEditPost={handleEditPost} />
             )}
@@ -59,7 +60,7 @@ export default async function SinglePostPage({ params }) {
         {comments.map((comment) => (
           <div key={comment.id}>
             <h3>
-              Username:{' '}
+              Username:{" "}
               <Link href={`/users/${comment.user_id}`}>{comment.username}</Link>
             </h3>
             <p>{comment.content}</p>
@@ -75,7 +76,7 @@ export default async function SinglePostPage({ params }) {
         <Comments postId={postId} />
       </SignedIn>
       <SignedOut>
-        <Link href={'/sign-in'}>Please Sign In</Link>
+        <Link href={"/sign-in"}>Please Sign In</Link>
       </SignedOut>
     </>
   );

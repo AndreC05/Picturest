@@ -32,4 +32,4 @@ CREATE TABLE likes (
     like_state BOOLEAN NOT NULL DEFAULT false
 );
 
-ALTER TABLE likes ADD CONSTRAINT unique_post_like UNIQUE (post_id, clerk_id);
+-- ALTER TABLE likes ADD CONSTRAINT unique_post_like UNIQUE (post_id, clerk_id); -- Not implemented
