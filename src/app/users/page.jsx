@@ -13,11 +13,15 @@ export default async function UsersProfile() {
 
   return (
     <>
-      <h3>Change username and bio: </h3>
+    <div className="flex flex-col m-3 sm:m-5 p-2.5  sm:p-5 bg-neutral-200 rounded-xl  gap-4 ">
+      <h3>Edit username and bio: </h3>
       <UpdateUserForm />
       <h3>
         Go to my profile: <Link href={`/users/${user_id}`}>click here</Link>
       </h3>
+
+    </div>
+      
     </>
   );
 }
