@@ -29,10 +29,13 @@ export default async function Posts() {
 
   return (
     <div>
-      <SignedIn>
+      <SignedIn >
         {" "}
         {numCount === 1 ? (
-          <button onClick={handleNewPost}>Add Post</button>
+          <div className="flex justify-center ">
+            <button className="bg-blue-500 p-3 flex justify-center rounded-lg  " onClick={handleNewPost}>Add Post</button>
+          </div>
+          
         ) : (
           <NewUserForm />
         )}
@@ -40,14 +43,14 @@ export default async function Posts() {
 
       <SignedOut>
         {" "}
-        <Link href={"/sign-in"}>Sign-in before making a post</Link>
+        <Link href={"/sign-in"} className="flex justify-center font-bold text-xl" >Sign-in before making a post</Link>
       </SignedOut>
 
       <div className="flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:gap-1 lg:grid-cols-3 lg:grid-rows-3 ">
         {posts.map((post) => (
           <div
             key={post.id}
-            className="flex  border bg-neutral-200 p-5 sm:p-5 flex-col m-5 w-80  rounded-2xl"
+            className="flex  border bg-neutral-200 p-5 sm:p-5 flex-col m-5 w-80  rounded-2xl lg:w-[400px]"
           >
             <div className="flex flex-row justify-between">
               <h3 className="text-xl">

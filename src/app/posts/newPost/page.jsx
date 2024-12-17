@@ -21,9 +21,9 @@ export default async function NewPost() {
     redirect('/posts');
   }
   return (
-    <form action={handleSubmit}>
+    <form className='flex flex-col p-5 m-5 gap-5 bg-neutral-200' action={handleSubmit}>
       <label>Title :</label>
-      <input
+      <input className="bg-neutral-200 border border-dotted border-black p-2 rounded mx-3"
         required
         name="title"
         placeholder="Title"
@@ -32,7 +32,7 @@ export default async function NewPost() {
         maxLength={30}
       />
       <label>Description : </label>
-      <textarea
+      <textarea className="bg-neutral-200 border border-dotted border-black p-2 rounded mx-3"
         required
         name="description"
         placeholder="description"
@@ -41,7 +41,7 @@ export default async function NewPost() {
         maxLength={100}
       ></textarea>
       <label>Image: </label>
-      <input name="imageSrc" />
+      <input name="imageSrc" placeholder='Add image here...' className="bg-neutral-200 border border-dotted border-black p-2 rounded mx-3" />
       <button type="submit">Submit</button>
     </form>
   );
