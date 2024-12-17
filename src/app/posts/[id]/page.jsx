@@ -8,6 +8,7 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import EditCommentBtn from "@/components/EditCommentBtn";
 import LikePost from "@/components/LikePost";
+import LikeComment from "@/components/LikeComment";
 
 //Page with a single post and comments //Also has form to create and another to edit comments
 export default async function SinglePostPage({ params }) {
@@ -65,6 +66,7 @@ export default async function SinglePostPage({ params }) {
             <p>{comment.content}</p>
             <p>{comment.date}</p>
             <p>{comment.likes}</p>
+            <LikeComment comment={comment} />
             <EditCommentBtn
               postId={postId}
               commentId={comment.id}
