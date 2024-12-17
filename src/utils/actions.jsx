@@ -57,7 +57,7 @@ export async function handleIncreasePostLikes(post) {
   db.query(`UPDATE posts SET likes = likes + 1 WHERE id = $1`, [post.id]);
 }
 
-export async function handleRevalidateAfterLike() {
+export async function handleRevalidateAfterLike(post) {
   revalidatePath("/posts");
+  revalidatePath(`/posts/${post.id}`);
 }
-

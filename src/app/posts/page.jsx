@@ -7,11 +7,9 @@ import Link from "next/link";
 import {
   handleDeletePost,
   handleEditPost,
-  handlefetchPostLikes,
   handleNewPost,
 } from "@/utils/actions";
 
-import PostLikeBtn from "@/components/postLikeBtn";
 import PostDeleteBtn from "@/components/postDeleteBtn";
 import EditPostBtn from "@/components/EditPostBtn";
 import LikePost from "@/components/LikePost";
