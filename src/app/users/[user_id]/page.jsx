@@ -1,7 +1,7 @@
-import NotFound from "@/app/not-found";
 import { db } from "@/utils/db";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function UserProfie({ params }) {
   const profileId = (await params).user_id;
@@ -14,7 +14,7 @@ export default async function UserProfie({ params }) {
   const userData = userResponse.rows;
 
   if (userData.length === 0) {
-    return <NotFound />;
+    notFound();
   }
 
   const clerk_id = userData[0].clerk_id;
@@ -34,15 +34,21 @@ export default async function UserProfie({ params }) {
     <>
       <SignedIn>
         <div className="flex justify-center items-center flex-col ">
-        {/* <h1>Profile: </h1> */}
-        
+          {/* <h1>Profile: </h1> */}
+
           {userData.map((user) => (
             <div className="flex flex-col gap-3" key={user.id}>
               <div className="flex flex-row gap-3">
-                <img className="rounded-full" width={50} src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />
+                <img
+                  className="rounded-full"
+                  width={50}
+                  src={
+                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                  }
+                />
                 <h2 className="pt-3">{user.username}</h2>
               </div>
-              
+
               <p>Bio: {user.bio}</p>
               <h4>Date Joined: {user.date}</h4>
             </div>
@@ -55,7 +61,7 @@ export default async function UserProfie({ params }) {
                 key={post.id}
                 className="flex  border bg-neutral-200 p-5 flex-col m-1 my-3 w-96 rounded-2xl"
               >
-                <div className="flex flex-row justify-between" >
+                <div className="flex flex-row justify-between">
                   <h3 className="text-xl">
                     <Link href={`/users/${post.user_id}`}>{post.username}</Link>
                   </h3>
@@ -66,19 +72,20 @@ export default async function UserProfie({ params }) {
                 <img src={post.image} />
                 {/* <h4>{post.date}</h4> */}
                 <div className="flex flex-row justify-around">
-                <p className="pt-2">{post.likes} likes</p>
-                
+                  <p className="pt-2">{post.likes} likes</p>
+
                   <Link href={`/posts/${post.id}`} className="pt-2">
-                    <img width={18} height={10} src={"../../images/comment.png"} />
+                    <img
+                      width={18}
+                      height={10}
+                      src={"../../images/comment.png"}
+                    />
                   </Link>
-              
-              </div>
+                </div>
               </div>
             ))}
           </div>
-          
         </div>
-        
       </SignedIn>
       <SignedOut>
         <Link href={"/sign-in"}>Please Sign-in</Link>

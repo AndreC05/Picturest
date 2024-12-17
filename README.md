@@ -1,5 +1,7 @@
 ## Picturest
 
+A platform where users can share their interests in the form of images and other users will then be able to create interact with it by liking the post or commenting about it
+
 ## Setup instructions
 
 1. Fork the repository and clone your fork to your local machine.
