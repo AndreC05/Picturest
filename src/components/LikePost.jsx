@@ -8,7 +8,7 @@ import PostLikeBtn from "./postLikeBtn";
 export default async function LikePost({ post }) {
   const { userId } = await auth();
 
-  const like = handlefetchPostLikes(post, userId);
+  const like = await handlefetchPostLikes(post, userId);
 
   return (
     <PostLikeBtn
