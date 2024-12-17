@@ -8,12 +8,12 @@ export default function Home() {
   ];
   return(
     <div className="styles.container">
-      <h1 className="styles.heading">Welcome to Picturest</h1>
-      <div>
+      <h1 className="flex justify-center font-bold text-xl">Welcome to Picturest</h1>
+      <div className="flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:gap-3  lg:grid-cols-3 ">
         {images.map((image, index) => (
-          <div key={index} className="styles.card">
-            <img src={image.src} alt={image.title} className="styles.image w-96 flex  border bg-neutral-200 p-5 flex-col m-5 w-96 rounded-2xl gap-5" />
-            <h2 className="styles.title">{image.title}</h2>
+          <div key={index} className=" flex p-5 m-5 border bg-neutral-200 flex-col w-80 rounded-2xl gap-5 lg:w-[400px]">
+            <img src={image.src} alt={image.title} className="w-72 h-64 md:w-[396px]" />
+            <h2 className="flex justify-center font-semibold">{image.title}</h2>
           </div>
         ))}
       </div>
