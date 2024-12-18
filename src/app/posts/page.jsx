@@ -88,7 +88,9 @@ export default async function Posts({ searchParams }) {
             <div className="flex flex-row gap-1">
               <div className="flex flex-col">
                 <p>{post.likes} likes</p>
-                <LikePost post={post} />
+                <SignedIn>
+                  <LikePost post={post} />
+                </SignedIn>
                 {userId == post.clerk_id && (
                   <EditPostBtn
                     postId={post.id}
