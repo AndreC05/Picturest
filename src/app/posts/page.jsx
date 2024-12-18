@@ -39,33 +39,40 @@ export default async function Posts({ searchParams }) {
 
   return (
     <div>
-      <SignedIn>
-        {" "}
-        {numCount === 1 ? (
-          <div className="flex justify-center ">
-            <button
-              className="bg-blue-500 p-3 flex justify-center rounded-lg  "
-              onClick={handleNewPost}
-            >
-              Add Post
-            </button>
-          </div>
-        ) : (
-          <NewUserForm />
-        )}
-      </SignedIn>
+      <div>
+        <SignedIn>
+          {" "}
+          {numCount === 1 ? (
+            <div className="flex justify-center ">
+              <button
+                className="bg-blue-500 p-3 flex justify-center rounded-lg  "
+                onClick={handleNewPost}
+              >
+                Add Post
+              </button>
+            </div>
+          ) : (
+            <div  className="flex flex-col m-3 sm:m-5 p-2.5  sm:p-5 bg-neutral-200 rounded-xl  gap-4 lg:mx-32  ">
+              <NewUserForm />
+            </div>
+            
+          )}
+        </SignedIn>
 
-      <SignedOut>
-        {" "}
-        <Link
-          href={"/sign-in"}
-          className="flex justify-center font-bold text-xl"
-        >
-          Sign-in before making a post
-        </Link>
-      </SignedOut>
+        <SignedOut>
+          {" "}
+          <Link
+            href={"/sign-in"}
+            className="flex justify-center font-bold text-xl"
+          >
+            Sign-in before making a post
+          </Link>
+        </SignedOut>
 
-      <PostSort />
+        <PostSort />
+
+      </div>
+      
 
       <div className="flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:gap-1 lg:grid-cols-3 lg:grid-rows-3 ">
         {posts.map((post) => (
@@ -85,25 +92,33 @@ export default async function Posts({ searchParams }) {
 
             <img src={post.image} className="w-full h-full p-2" />
 
-            <div className="flex flex-row gap-1">
+            <div className="flex flex-row gap-16">
               <div className="flex flex-col">
                 <p>{post.likes} likes</p>
                 <SignedIn>
                   <LikePost post={post} />
                 </SignedIn>
-                {userId == post.clerk_id && (
-                  <EditPostBtn
-                    postId={post.id}
-                    handleEditPost={handleEditPost}
-                  />
-                )}
-                {userId == post.clerk_id && (
-                  <PostDeleteBtn
-                    post={post}
-                    handleDeletePost={handleDeletePost}
-                  />
-                )}
               </div>
+
+              <div className="pt-5">
+                  {userId == post.clerk_id && (
+                    <EditPostBtn 
+                      postId={post.id}
+                      handleEditPost={handleEditPost}
+                    />
+                  )}
+              </div>
+
+              <div className="pt-5">
+                {userId == post.clerk_id && (
+                    <PostDeleteBtn
+                      post={post}
+                      handleDeletePost={handleDeletePost}
+                    />
+                  )}
+
+              </div>
+              
               <Link href={`/posts/${post.id}`} className="pt-5">
                 <img
                   width={18}
