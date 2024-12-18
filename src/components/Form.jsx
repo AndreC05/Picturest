@@ -29,6 +29,7 @@ export default function Upload() {
   };
 
   return (
+
     <div className="h-[450]bg-[#e9e9e9] rounded-lg flex-col flex justify-center items-center">
       <h1 className="font-semibold text-[25px] flex justify-center">
         Upload Image
@@ -39,10 +40,9 @@ export default function Upload() {
         className="text-[15px] flex justify-end text-center ml-16"
         onChange={uploadFile}
       />
+
       <div>
-        <h2 className="font-semibold text-[30px] flex justify-center">
-          Uploaded Image
-        </h2>
+        <h2 className="font-semibold text-[30px] ">Uploaded Image</h2>
 
         <img
           src={imageUrl}
