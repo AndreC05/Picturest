@@ -29,10 +29,18 @@ export default function Upload() {
   };
 
   return (
-    <div className="h-[450]bg-[#e9e9e9] rounded-lg">
-      <h1 className="font-semibold text-[25px] ">Upload Image</h1>
 
-      <input className="text-[15px] " type="file" onChange={uploadFile} />
+    <div className="h-[450]bg-[#e9e9e9] rounded-lg flex-col flex justify-center items-center">
+      <h1 className="font-semibold text-[25px] flex justify-center">
+        Upload Image
+      </h1>
+
+      <input
+        type="file"
+        className="text-[15px] flex justify-end text-center ml-16"
+        onChange={uploadFile}
+      />
+
       <div>
         <h2 className="font-semibold text-[30px] ">Uploaded Image</h2>
 
@@ -41,7 +49,7 @@ export default function Upload() {
           alt="Uploaded"
           width={500}
           height={500}
-          className="object-contain h-[90%] "
+          className="object-contain h-[90%] flex justify-center "
         />
       </div>
     </div>
