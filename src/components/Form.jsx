@@ -29,15 +29,29 @@ export default function Upload() {
   };
 
   return (
-    <div>
-      <h1>Upload Image</h1>
-      <input type="file" onChange={uploadFile} />
-      {/* {imageUrl && ( */}
+    <div className="h-[450]bg-[#e9e9e9] rounded-lg">
+      <h1 className="font-semibold text-[25px] flex justify-center">
+        Upload Image
+      </h1>
+
+      <input
+        type="file"
+        className="text-[15px] align-center text-center"
+        onChange={uploadFile}
+      />
       <div>
-        <h2>Uploaded Image</h2>
-        <img src={imageUrl} alt="Uploaded" />
+        <h2 className="font-semibold text-[30px] flex justify-center">
+          Uploaded Image
+        </h2>
+
+        <img
+          src={imageUrl}
+          alt="Uploaded"
+          width={500}
+          height={500}
+          className="object-contain h-[90%] "
+        />
       </div>
-      {/* )} */}
     </div>
   );
 }

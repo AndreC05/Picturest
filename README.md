@@ -39,3 +39,16 @@ A platform where users can share their interests in the form of images and other
 ## Wireframes
 
 //Add images
+
+##Supabase
+
+1. Install Supabase:
+   npm install @supabase/supabase-js
+2. Create a new folder in the src folder. In this folder, add a new file named supabase.js and use the following code to initialize the Supabase client.
+   import { createClient } from '@supabase/supabase-js'
+   export const supabase = createClient(
+   process.env.SUPABASE_PROJECT_URL,
+   process.env.SUPABASE_ANON_KEY
+   );
+   3.Create storage Bucket- click public.
+   4.Save
