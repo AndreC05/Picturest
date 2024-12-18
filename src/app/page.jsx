@@ -2,9 +2,9 @@
 
 export default function Home() {
   const images = [
-    { src: "https://wallpaperaccess.com/full/4365626.jpg", title: "Chongqing, China" },
-    { src: "https://wallpapercave.com/wp/wp6860393.jpg", title: "Los Angeles, U.S.A" },
-    { src: "https://wallpaperaccess.com/full/411632.jpg", title: "Hawaii, U.S.A" },
+    { src: "chongqing.jpg", title: "Chongqing, China" },
+    { src: "LA.jpg", title: "Los Angeles, U.S.A" },
+    { src: "hawaii.jpg", title: "Hawaii, U.S.A" },
   ];
   return(
     <div className="styles.container">
