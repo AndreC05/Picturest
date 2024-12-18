@@ -1,3 +1,4 @@
+import { SignedIn } from "@clerk/nextjs";
 import {
   ActivityLogIcon,
   HomeIcon,
@@ -5,9 +6,9 @@ import {
   PersonIcon,
   QuestionMarkCircledIcon,
   QuestionMarkIcon,
-} from '@radix-ui/react-icons';
-import Link from 'next/link';
-import React from 'react';
+} from "@radix-ui/react-icons";
+import Link from "next/link";
+import React from "react";
 
 export default function NavBar() {
   return (
@@ -23,23 +24,25 @@ export default function NavBar() {
 
         <Link
           className="w-18 sm:w-20 md:w-28 h-12 sm:h-[103px] py-9 p-2 hover:bg-neutral-800 flex flex-row justify-center items-center"
-          href={'/create'}
+          href={"/create"}
         >
           Create
           <ImageIcon className="w-2 sm:w-10" />
         </Link>
         <Link
           className=" w-18 sm:w-20 md:w-28 h-12 sm:h-[103px] py-9 m-0 p-2 gap-1 sm:gap-2 flex flex-row justify-center items-center hover:bg-neutral-800"
-          href={'/posts'}
+          href={"/posts"}
         >
           Posts <ActivityLogIcon className="w-2 sm:w-10" />
         </Link>
-        <Link
-          className="w-18 sm:w-20 md:w-28 h-12 sm:h-[103px] py-5 m-0 p-2 gap-1 sm:gap-2 flex flex-row justify-center items-center hover:bg-neutral-800"
-          href={'/users'}
-        >
-          User Profile <PersonIcon className="w-3 sm:w-10 " />
-        </Link>
+        <SignedIn>
+          <Link
+            className="w-18 sm:w-20 md:w-28 h-12 sm:h-[103px] py-5 m-0 p-2 gap-1 sm:gap-2 flex flex-row justify-center items-center hover:bg-neutral-800"
+            href={"/users"}
+          >
+            User Profile <PersonIcon className="w-3 sm:w-10 " />
+          </Link>
+        </SignedIn>
         <Link
           className=" w-18 sm:w-20 md:w-28 h-12 sm:h-[103px] py-9 m-0 p-2 gap-1  sm:gap-2 flex flex-row justify-center items-center hover:bg-neutral-800"
           href="/about"
