@@ -18,8 +18,8 @@ export default async function Comments({ postId }) {
   }
 
   return (
-    <form className="p-5" action={handleComment}>
-      <input name="content" type="text" placeholder="comment" />
+    <form className="p-2 border border-black border-dotted rounded w-72" action={handleComment}>
+      <input className='outline-none' name="content" type="text" placeholder="Add comment" />
       <button type="submit">Comment</button>
     </form>
   );

@@ -42,7 +42,10 @@ export default async function NewPost() {
       ></textarea>
       <label>Image: </label>
       <input name="imageSrc" placeholder='Add image here...' className="bg-neutral-200 border border-dotted border-black p-2 rounded mx-3" />
-      <button type="submit">Submit</button>
+      <div className='flex justify-center items-center'>
+        <button className='bg-blue-400 p-2 w-24 rounded-lg' type="submit">Submit</button>
+      </div>
+      
     </form>
   );
 }
