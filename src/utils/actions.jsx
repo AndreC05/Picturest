@@ -100,3 +100,38 @@ export async function handleIncreaseCommentLikes(comment) {
 export async function handleRevalidateCommentsAfterLike(postId) {
   revalidatePath(`/posts/${postId}`);
 }
+
+//--------------------------------------------------------Post Sort
+
+export async function handleGetPostsDesc() {
+  const postRes =
+    await db.query(`SELECT posts.id, posts.title, posts.clerk_id, posts.content, posts.image, users.username, users.id AS user_id,
+    TO_CHAR(posts.post_date, 'YYYY-MM-DD') AS date, posts.likes FROM posts JOIN users ON posts.clerk_id=users.clerk_id 
+    ORDER BY posts.id DESC`);
+
+  const posts = postRes.rows;
+
+  return posts;
+}
+
+export async function handleGetPostsAsc() {
+  const postRes =
+    await db.query(`SELECT posts.id, posts.title, posts.clerk_id, posts.content, posts.image, users.username, users.id AS user_id,
+    TO_CHAR(posts.post_date, 'YYYY-MM-DD') AS date, posts.likes FROM posts JOIN users ON posts.clerk_id=users.clerk_id 
+    ORDER BY posts.id ASC`);
+
+  const posts = postRes.rows;
+
+  return posts;
+}
+
+export async function handleGetPostsByLikes() {
+  const postRes =
+    await db.query(`SELECT posts.id, posts.title, posts.clerk_id, posts.content, posts.image, users.username, users.id AS user_id,
+    TO_CHAR(posts.post_date, 'YYYY-MM-DD') AS date, posts.likes FROM posts JOIN users ON posts.clerk_id=users.clerk_id 
+    ORDER BY posts.likes DESC`);
+
+  const posts = postRes.rows;
+
+  return posts;
+}

@@ -7,35 +7,49 @@ import Link from "next/link";
 import {
   handleDeletePost,
   handleEditPost,
+  handleGetPostsAsc,
+  handleGetPostsByLikes,
+  handleGetPostsDesc,
   handleNewPost,
 } from "@/utils/actions";
 
 import PostDeleteBtn from "@/components/postDeleteBtn";
 import EditPostBtn from "@/components/EditPostBtn";
 import LikePost from "@/components/LikePost";
+import PostSort from "@/components/PostSort";
 
-export default async function Posts() {
+export default async function Posts({ searchParams }) {
   const { userId } = await auth();
+  const sort = (await searchParams).sort;
 
-  const posts = (
-    await db.query(`SELECT posts.id, posts.title, posts.clerk_id, posts.content, posts.image, users.username, users.id AS user_id,
-         TO_CHAR(posts.post_date, 'YYYY-MM-DD') AS date, posts.likes FROM posts JOIN users ON posts.clerk_id=users.clerk_id 
-         ORDER BY posts.id DESC`)
-  ).rows;
+  let posts = await handleGetPostsDesc();
 
   const numCount = (
     await db.query(`SELECT * FROM users WHERE clerk_id='${userId}'`)
   ).rowCount;
 
+  //Sort posts
+  if (sort === "asc") {
+    posts = await handleGetPostsAsc();
+  } else if (sort === "desc") {
+    posts = await handleGetPostsDesc();
+  } else if (sort === "likes") {
+    posts = await handleGetPostsByLikes();
+  }
+
   return (
     <div>
-      <SignedIn >
+      <SignedIn>
         {" "}
         {numCount === 1 ? (
           <div className="flex justify-center ">
-            <button className="bg-blue-500 p-3 flex justify-center rounded-lg  " onClick={handleNewPost}>Add Post</button>
+            <button
+              className="bg-blue-500 p-3 flex justify-center rounded-lg  "
+              onClick={handleNewPost}
+            >
+              Add Post
+            </button>
           </div>
-          
         ) : (
           <NewUserForm />
         )}
@@ -43,8 +57,15 @@ export default async function Posts() {
 
       <SignedOut>
         {" "}
-        <Link href={"/sign-in"} className="flex justify-center font-bold text-xl" >Sign-in before making a post</Link>
+        <Link
+          href={"/sign-in"}
+          className="flex justify-center font-bold text-xl"
+        >
+          Sign-in before making a post
+        </Link>
       </SignedOut>
+
+      <PostSort />
 
       <div className="flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:gap-1 lg:grid-cols-3 lg:grid-rows-3 ">
         {posts.map((post) => (
