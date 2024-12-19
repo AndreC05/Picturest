@@ -47,10 +47,10 @@ A platform where users can share their interests in the form of images and other
    process.env.SUPABASE_PROJECT_URL,
    process.env.SUPABASE_ANON_KEY
    );.
-   3.Create storage Bucket- click public.
-   4.Under Bucket policies, click the New policy button.
-   5.Select the For full customization option to create a policy from scratch.
-   6.In the Add policy dialog, enter a name for your policy (e.g. "Allow Insert and Read").
-   7.Select INSERT and SELECT permissions from the Allowed operations dropdown menu.
-   8.Click the Review button to review the policies.
-   9.Click the Save button to add the policy.
+3. Create storage Bucket- click public.
+4. Under Bucket policies, click the New policy button.
+5. Select the For full customization option to create a policy from scratch.
+6. In the Add policy dialog, enter a name for your policy (e.g. "Allow Insert and Read").
+7. Select INSERT and SELECT permissions from the Allowed operations dropdown menu.
+8. Click the Review button to review the policies.
+9. Click the Save button to add the policy.
