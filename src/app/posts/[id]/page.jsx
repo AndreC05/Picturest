@@ -35,10 +35,8 @@ export default async function SinglePostPage({ params }) {
 
   return (
     <>
-    
       <SignedIn>
         <div className="flex flex-col md:grid sm:grid-cols-2 sm:grid-rows-2 lg:gap-1 lg:grid-cols-3 lg:grid-rows-3 ">
-
           {post.map((p) => (
             <div
               key={p.id}
@@ -73,11 +71,13 @@ export default async function SinglePostPage({ params }) {
                       }
                     />
                     <h3 className="pt-3">
-                      <Link href={`/users/${comment.user_id}`}>{comment.username}</Link>
+                      <Link href={`/users/${comment.user_id}`}>
+                        {comment.username}
+                      </Link>
                     </h3>
                   </div>
-                <p className="pt-2">{comment.date}</p>
-              </div>
+                  <p className="pt-2">{comment.date}</p>
+                </div>
                 <p className="ml-16  pt-1">{comment.content}</p>
                 <div className="flex flex-row gap-16 ml-16 pt-2">
                   <div>
@@ -85,22 +85,21 @@ export default async function SinglePostPage({ params }) {
                     <p>{comment.likes}</p>
                   </div>
                   <div>
-                      <EditCommentBtn className="pb-4"
+                    {userId == post.clerk_id && (
+                      <EditCommentBtn
+                        className="pb-4"
                         postId={postId}
                         commentId={comment.id}
                         handleEditCommentBtn={handleEditCommentBtn}
                       />
+                    )}
                   </div>
                 </div>
               </div>
             ))}
             <Comments postId={postId} />
-
           </div>
-          
         </div>
-        
-
       </SignedIn>
       <SignedOut>
         <Link href={"/sign-in"}>Please Sign In</Link>
