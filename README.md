@@ -36,10 +36,6 @@ A platform where users can share their interests in the form of images and other
 - As a user I'd like to see pages and menus that are organised and intuitive.
 - As a user I'd like to be able to see my own profile and other users' profiles that include information about them and the posts they have made.
 
-## Wireframes
-
-//Add images
-
 ## Supabase
 
 1. Install Supabase:
